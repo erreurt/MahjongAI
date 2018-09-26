@@ -2,7 +2,6 @@
 from client.mahjong_player import MainPlayer
 
 __author__ = "Jianyang Tang"
-__copyright__ = "Copyright 2018, Mahjong AI Master Thesis"
 __email__ = "jian4yang2.tang1@gmail.com"
 
 
