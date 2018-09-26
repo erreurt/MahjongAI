@@ -225,29 +225,25 @@ class OppPlayer(OpponentPlayer):
 
 
 class EnsembleCLF:
-    root_dir = os.path.dirname(os.path.abspath(__file__)) + "/utils/ensemble_clfs/"
+    root_dir = os.path.dirname(os.path.abspath(__file__)) + "/utils/clfs/"
     RICHII = True
     NORMAL = True
 
     def __init__(self):
         if self.RICHII:
             self.clfs_richii = []
-            ensembles_richii = os.listdir(self.root_dir)
-            ensembles_richii = [f for f in ensembles_richii if '_R_' in f]
-            for f in ensembles_richii:
-                clfs = pickle.load(open(self.root_dir + f, 'rb'))
-                for k, v in clfs.items():
-                    self.clfs_richii.append(v)
+            clfs = os.listdir(self.root_dir)
+            clfs = [f for f in clfs if 'R_(' in f]
+            for f in clfs:
+                self.clfs_richii.append(pickle.load(open(self.root_dir + f, 'rb')))
             print("{} richii classifiers loaded".format(len(self.clfs_richii)))
         if self.NORMAL:
             self.clfs_normal = []
-            ensembles_normal = os.listdir(self.root_dir)
-            ensembles_normal = [f for f in ensembles_normal if '_N_' in f]
+            clfs = os.listdir(self.root_dir)
+            clfs = [f for f in clfs if 'N_(' in f]
             # print(ensembles_normal)
-            for f in ensembles_normal:
-                clfs = pickle.load(open(self.root_dir + f, 'rb'))
-                for k, v in clfs.items():
-                    self.clfs_normal.append(v)
+            for f in clfs:
+                self.clfs_normal.append(pickle.load(open(self.root_dir + f, 'rb')))
             print("{} normal waiting classifiers loaded".format(len(self.clfs_normal)))
 
     def predict_normal_single_prio(self, input_f):
