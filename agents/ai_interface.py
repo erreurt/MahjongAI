@@ -20,6 +20,3 @@ class AIInterface(MainPlayer):
     def can_call_reach(self):
         raise NotImplementedError
 
-    def handle_opponent_discard(self, opp_seat):
-        raise NotImplementedError
-
