@@ -29,24 +29,16 @@ The implemented client allows one to run a Mahjong agent directly through the pr
 To run the Mahjong agent, one has to specify a few configurations. As shown in main.py:
 ```python
 def run_example_ai():
-    # the OBJECT of your own implemented Mahjong agent
     ai_module = importlib.import_module("agents.random_ai_example")
     ai_class = getattr(ai_module, "RandomAI")
-    ai_obj = ai_class()
-
-    # the CLASS of your extended OpponentPlayer, or the default one in mahjong_player.py
+    ai_obj = ai_class()  # [1]
     player_module = importlib.import_module("client.mahjong_player")
-    opponent_class = getattr(player_module, "OpponentPlayer")
-
-    user = "ID696E3BCC-hLHNE8Wf"      # the user ID that you got after having registered in tenhou.net
-    user_name = "tst_tio"      # the user name that you have created while registration in tenhou.net
-
-    game_type = '1'      # '137' 南 '193' 东速高
-
-    logger_obj = Logger("log1", user_name)      # two arguments: id of your test epoch, user name
-
+    opponent_class = getattr(player_module, "OpponentPlayer")  # [2]
+    user = "ID696E3BCC-hLHNE8Wf"  # [3]
+    user_name = "tst_tio"  # [4]
+    game_type = '1'  # [5]
+    logger_obj = Logger("log1", user_name)  [6]
     connect_and_play(ai_obj, opponent_class, user, user_name, '0', game_type, logger_obj)  # play one game
-
 ```
 
 ***
