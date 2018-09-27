@@ -243,9 +243,9 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
 
 The proposed Mahjong agent was tested on tenhou.net. The test was carried out in two versions, i.e. one with defence model and another one without. The raw game logs and intermediate game results can be found in my another repository: https://github.com/erreurt/Experiments-result-of-mahjong-bot. 
 
-### 5.1 Convergence behavior of agent's performance
+### 5.1. Convergence behavior of agent's performance
 
-For the version with defence model, 526 games were played, and for the version without defence model, 536 games were played. This is not as many as two related works, but as shown in the figure of the convergence behavior of agent's performance, 526 games are sufficient.
+For the version with defence model, 526 games were played, and for the version without defence model, 532 games were played. This is not as many as two related works, but as shown in the figure of the convergence behavior of agent's performance, 526 games are sufficient.
 
 #### Convergence behavior of agent's performance ***with*** defence model
 <img src="./figs/stats_rank_distribution.png" width="600">
@@ -254,5 +254,34 @@ For the version with defence model, 526 games were played, and for the version w
 #### Convergence behavior of agent's performance ***without*** defence model
 <img src="./figs/stats_rank_distribution_wo.png" width="600">
 <img src="./figs/stats_wl_rate_wo.png" width="600">
+
+### 5.2. Agent's performance compared to that of two related works
+
+Mizukami's extended work can be seen as currently the best and the most reliable Mahjong agent in English literatures. Here a comparison between the performance of my Mahjong agent and that of Mizukami's is presented:
+
+   |  | [1] | [2] | [3] | [4] |
+   | ---------- | ----------- | ----------- | ----------- | ----------- |
+   | Games played | 526 | 532 | 2634 | 1441 |
+   | 1st place rate | 23.95% | 22.65% | 24.10% | 25.30% |
+   | 2nd place rate | 26.62% | 25.92% | 28.10% | 24.80% |
+   | 3rd place rate | 31.75% | 25.71% | 24.80% | 25.10% |
+   | 4th place rate | ***17.68%*** | 25.71% | 23.00% | 24.80% |
+   | win rate | 24.68% | 26.50% | 24.50% | 25.60% |
+   | lose rate | 13.92% | 20.21% | 13.10% | 14.80% |
+   | fixed level | 2.21 Dan | 0.77 Dan | 1.14 Dan | 1.04 Dan |
+   
+   * ***[1]*** My Mahjong agent ***with*** defence model
+   
+   * ***[2]*** My Mahjong agent ***without*** defence model
+   
+   * ***[3]*** **Mizukami's extended work**: Mizukami N., Tsuruoka Y.. *Building a computer mahjong player based on monte carlo
+simulation and opponent models.* In: 2015 IEEE Conference on Computational Intelligence
+and Games (CIG), pp. 275–283. IEEE (2015)
+
+   * ***[4]*** **Mizukami et. al.**: N. Mizukami, R. Nakahari, A. Ura, M. Miwa, Y. Tsuruoka, and T. Chikayama. *Realizing
+a four-player computer mahjong program by supervised learning with isolated multi-player
+aspects.* Transactions of Information Processing Society of Japan, vol. 55, no. 11, pp. 1–11,
+2014, (in Japanese).
+   
 
 
