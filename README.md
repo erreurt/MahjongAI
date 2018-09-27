@@ -11,7 +11,7 @@ Also the test result of my Mahjong agent will be presented (section 3).
 
 ****
 
-## Contents
+# Contents
 * [1. Game rules of Japanese Riichi Mahjong](#rules)
 * [2. Directory of the program and short explanations](#dir)
 * [3. Performance (Experiments result) of the proposed Mahjong agent](#res)
@@ -26,13 +26,13 @@ Also the test result of my Mahjong agent will be presented (section 3).
 
 ***
 
-## <a name="rules"></a>1. Game rules of Japanese Riichi Mahjong
+# <a name="rules"></a>1. Game rules of Japanese Riichi Mahjong
 Refer to https://en.wikipedia.org/wiki/Japanese_Mahjong for game rules of Japanese Riichi Mahjong. 
 
 The implemented client allows one to run a Mahjong agent directly through the programm, instead of doing this in the web browser. The site for online playing of Japanese Riichi Mahjong is http://tenhou.net/
 ***
 
-## <a name="dir"></a>2. Directory of the program and short explanations
+# <a name="dir"></a>2. Directory of the program and short explanations
 
 * **MahjongAI**
    * **agents**
@@ -58,7 +58,7 @@ The implemented client allows one to run a Mahjong agent directly through the pr
 
 ***
 
-## <a name="res"></a>3. Performance of the proposed Mahjong agent
+# <a name="res"></a>3. Performance of the proposed Mahjong agent
 
 The proposed Mahjong agent was tested on tenhou.net. The test was carried out in two versions, i.e. one with defence model and another one without. The raw game logs and intermediate game results can be found in my another repository: https://github.com/erreurt/Experiments-result-of-mahjong-bot. 
 
@@ -104,7 +104,7 @@ aspects.* Transactions of Information Processing Society of Japan, vol. 55, no. 
 
 ***
 
-## <a name="run"></a>4. How to run the proposed Mahjong agent?
+# <a name="run"></a>4. How to run the proposed Mahjong agent?
 To run the Mahjong agent, one has to specify a few configurations. As shown in the following example from main.py:
 ```python
 def run_example_ai():
@@ -170,7 +170,7 @@ After specifying all these configurations, just throw all these parameters to co
 
 ***
 
-## <a name="dev"></a>5. How to develop your own Mahjong agent?
+# <a name="dev"></a>5. How to develop your own Mahjong agent?
 
 ### 5.1. Output: What functions should be implemented?
 
