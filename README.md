@@ -21,6 +21,8 @@ Also the test result of my Mahjong agent will be presented.
     * 4.1. Output : What functions has to be implemented for your Mahjong agent
     * 4.2. Input: What information of the game state you have access to
 * [5. Performance (Experiments result) of the proposed Mahjong agent](#res)
+   * 5.1. Convergence behavior of agent's performance
+   * 5.2. Comparison of agent's performance with that of two related works
 
 
 ***
@@ -241,8 +243,16 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
 
 The proposed Mahjong agent was tested on tenhou.net. The test was carried out in two versions, i.e. one with defence model and another one without. The raw game logs and intermediate game results can be found in my another repository: https://github.com/erreurt/Experiments-result-of-mahjong-bot. 
 
-For the version with defence model, 526 games are played. This is not as many as two related works, but as shown in the figure of the convergence behavior of agent's performance, 526 games are sufficient.
+### 5.1 Convergence behavior of agent's performance
 
+For the version with defence model, 526 games were played, and for the version without defence model, 536 games were played. This is not as many as two related works, but as shown in the figure of the convergence behavior of agent's performance, 526 games are sufficient.
 
+#### Convergence behavior of agent's performance ***with*** defence model
+<img src="./figs/stats_rank_distribution.png" width="600">
+<img src="./figs/stats_wl_rate.png" width="600">
+
+#### Convergence behavior of agent's performance ***without*** defence model
+<img src="./figs/stats_rank_distribution_wo.png" width="600">
+<img src="./figs/stats_wl_rate_wo.png" width="600">
 
 
