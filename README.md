@@ -12,12 +12,12 @@ Also the test result of my Mahjong agent will be presented (section 3).
 ****
 
 # Contents
-* [1. Game rules of Japanese Riichi Mahjong](#rules)
-* [2. Directory of the program and short explanations](#dir)
-* [3. Overview of the proposed Mahjong bot](#over)
-* [4. Experiments result of the proposed Mahjong bot](#res)
-* [5. Run the proposed Mahjong bot](#run)
-* [6. Develop your own Mahjong bot](#dev)
+* [1. Japanese Riichi Mahjong: Game rules](#rules)
+* [2. Directory of the program](#dir)
+* [3. Overview of the Mahjong bot](#over)
+* [4. Experiments result of the bot](#res)
+* [5. Instructions I: Run the proposed Mahjong bot](#run)
+* [6. Instructions II: Develop your own Mahjong bot](#dev)
 * [Acknowledgments](#ack)
 
 
