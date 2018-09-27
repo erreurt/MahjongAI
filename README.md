@@ -215,15 +215,15 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
    | ---------- | ----------- | ----------- | ----------- |
    | <sub>self.tiles136</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>hand tiles in 136-form</sub> |
    | <sub>self.hand34</sub> | <sub>list of integers</sub> | <sub>N</sub> | <sub>hand tiles in 34-form (tile34 = tile136//4)</sub> |
-   | <sub>self.discard136</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>the discards of the agent in temperal order, in 136-from</sub> |
-   | <sub>self.discard34</sub> | <sub>list of integers</sub> | <sub>N</sub> | <sub>the discards of the agent in temperal order, in 34-form</sub> |
+   | <sub>self.discard136</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>the discards of the agent in 136-from</sub> |
+   | <sub>self.discard34</sub> | <sub>list of integers</sub> | <sub>N</sub> | <sub>the discards of the agent in 34-form</sub> |
    | <sub>self.meld136</sub> | <sub>list of Meld instances</sub> | <sub>Y</sub> | <sub>the called melds of the agent, instances of class Meld in ***client.mahjong_meld.py***</sub> |
-   | <sub>self.total_melds34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called melds of the agent in 34-form, each list in the list corresponds to a meld</sub> |
-   | <sub>self.meld34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called pon/chow melds of the agent in 34-form, each list in the list corresponds to a pon/chow meld</sub> |
-   | <sub>self.pon34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called pon melds of the agent in 34-form, each list in the list corresponds to a pon meld</sub> |
-   | <sub>self.chow34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called chow melds of the agent in 34-form, each list in the list corresponds to a chow meld</sub> |
-   | <sub>self.minkan34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called minkan melds of the agent in 34-form, each list in the list corresponds to a minkan meld</sub> |
-   | <sub>self.ankan34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called ankan melds of the agent in 34-form, each list in the list corresponds to a ankan meld</sub> |
+   | <sub>self.total_melds34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called melds of the agent in 34-form</sub> |
+   | <sub>self.meld34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called pon/chow melds of the agent in 34-form</sub> |
+   | <sub>self.pon34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called pon melds of the agent in 34-form</sub> |
+   | <sub>self.chow34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called chow melds of the agent in 34-form</sub> |
+   | <sub>self.minkan34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called minkan melds of the agent in 34-form</sub> |
+   | <sub>self.ankan34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called ankan melds of the agent in 34-form</sub> |
    | <sub>self.name</sub> | <sub>string</sub> | <sub>Y</sub> | <sub>name of the account</sub> |
    | <sub>self.level</sub> | <sub>string</sub> | <sub>Y</sub> | <sub>level of the account</sub> |
    | <sub>self.seat</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>seat ID, the agent always has 0</sub> |
@@ -245,30 +245,30 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
    
    | Access  | Data type | Mutable | Desription |
    | ---------- | ----------- | ----------- | ----------- |
-   | <sub>self.game_table.get_player(i).discard136</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>the discards of the observed opponent in temperal order, in 136-from</sub> |
-   | <sub>self.game_table.get_player(i).discard34</sub> | <sub>list of integers</sub> | <sub>N</sub> | <sub>the discards of the observed opponent  in temperal order, in 34-form</sub> |
-   | <sub>self.game_table.get_player(i).meld136</sub> | <sub>list of Meld instances</sub> | <sub>Y</sub> | <sub>the called melds of the observed opponent , instances of class Meld in ***client.mahjong_meld.py***</sub> |
-   | <sub>self.game_table.get_player(i).total_melds34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called melds of the observed opponent  in 34-form, each list in the list corresponds to a meld</sub> |
-   | <sub>self.game_table.get_player(i).meld34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called pon/chow melds of the observed opponent  in 34-form, each list in the list corresponds to a pon/chow meld</sub> |
-   | <sub>self.game_table.get_player(i).pon34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called pon melds of the observed opponent  in 34-form, each list in the list corresponds to a pon meld</sub> |
-   | <sub>self.game_table.get_player(i).chow34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called chow melds of the observed opponent  in 34-form, each list in the list corresponds to a chow meld</sub> |
-   | <sub>self.game_table.get_player(i).minkan34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called minkan melds of the observed opponent  in 34-form, each list in the list corresponds to a minkan meld</sub> |
-   | <sub>self.game_table.get_player(i).ankan34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called ankan melds of the observed opponent  in 34-form, each list in the list corresponds to a ankan meld</sub> |
-   | <sub>self.game_table.get_player(i).safe_tiles</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>tiles in 34-form which are absolutely safe for the agent, i.e. the observed opponent cannot win with these tiles</sub> |
-   | <sub>self.game_table.get_player(i).name</sub> | <sub>string</sub> | <sub>Y</sub> | <sub>name of the opponent</sub> |
-   | <sub>self.game_table.get_player(i).level</sub> | <sub>string</sub> | <sub>Y</sub> | <sub>level of the opponent</sub> |
-   | <sub>self.game_table.get_player(i).seat</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>seat ID of the observed opponent</sub> |
-   | <sub>self.game_table.get_player(i).dealer_seat</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>the seat ID of the dealer</sub>  |
-   | <sub>self.game_table.get_player(i).is_dealer</sub> | <sub>boolean</sub> | <sub>N</sub> | <sub>whether the observed opponent is dealer or not</sub> |
-   | <sub>self.game_table.get_player(i).reach_status</sub> | <sub>boolean</sub> | <sub>Y</sub> | <sub>indicates whether the observed opponent has claimed Riichi</sub> |
-   | <sub>self.game_table.get_player(i).just_reach()</sub> | <sub>boolean</sub> | <sub>N</sub> | <sub>whether the observed opponent just claimed Riichi</sub> |
-   | <sub>self.game_table.get_player(i).tmp_rank</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>rank of the observed opponent in the current game</sub> |
-   | <sub>self.game_table.get_player(i).score</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>score of the observed opponent in the current game</sub> |
-   | <sub>self.game_table.get_player(i).is_open_hand</sub> | <sub>boolean</sub> | <sub>N</sub> | <sub>whether the observed opponent has already called open melds</sub> |
-   | <sub>self.game_table.get_player(i).turn_num</sub> | <sub>integer</sub> | <sub>N</sub> | <sub>the number of the current turn</sub> |
-   | <sub>self.game_table.get_player(i).player_wind</sub> | <sub>integer</sub> | <sub>N</sub> | <sub>player wind is one kind of [yaku](https://en.wikipedia.org/wiki/Japanese_Mahjong#Yaku_and_yakuman)</sub> |
-   | <sub>self.game_table.get_player(i).round_wind</sub> | <sub>integer</sub> | <sub>N</sub> | <sub>round wind is one kind of [yaku](https://en.wikipedia.org/wiki/Japanese_Mahjong#Yaku_and_yakuman)</sub> |
-   | <sub>self.game_table.get_player(i).bonus_honors</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>all the character tiles which have [yaku](https://en.wikipedia.org/wiki/Japanese_Mahjong#Yaku_and_yakuman)</sub> |
+   | <sub>.discard136</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>the discards of the observed opponent in 136-from</sub> |
+   | <sub>.discard34</sub> | <sub>list of integers</sub> | <sub>N</sub> | <sub>the discards of the observed opponent in 34-form</sub> |
+   | <sub>.meld136</sub> | <sub>list of Meld instances</sub> | <sub>Y</sub> | <sub>the called melds of the observed opponent, instances of class Meld in ***client.mahjong_meld.py***</sub> |
+   | <sub>.total_melds34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called melds of the observed opponent  in 34-form</sub> |
+   | <sub>.meld34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called pon/chow melds of the observed opponent  in 34-form</sub> |
+   | <sub>.pon34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called pon melds of the observed opponent  in 34-form</sub> |
+   | <sub>.chow34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called chow melds of the observed opponent  in 34-form</sub> |
+   | <sub>.minkan34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called minkan melds of the observed opponent  in 34-form</sub> |
+   | <sub>.ankan34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called ankan melds of the observed opponent  in 34-form</sub> |
+   | <sub>.safe_tiles</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>tiles in 34-form which are absolutely safe for the agent, i.e. the observed opponent cannot win with these tiles</sub> |
+   | <sub>.name</sub> | <sub>string</sub> | <sub>Y</sub> | <sub>name of the opponent</sub> |
+   | <sub>.level</sub> | <sub>string</sub> | <sub>Y</sub> | <sub>level of the opponent</sub> |
+   | <sub>.seat</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>seat ID of the observed opponent</sub> |
+   | <sub>.dealer_seat</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>the seat ID of the dealer</sub>  |
+   | <sub>.is_dealer</sub> | <sub>boolean</sub> | <sub>N</sub> | <sub>whether the observed opponent is dealer or not</sub> |
+   | <sub>.reach_status</sub> | <sub>boolean</sub> | <sub>Y</sub> | <sub>indicates whether the observed opponent has claimed Riichi</sub> |
+   | <sub>.just_reach()</sub> | <sub>boolean</sub> | <sub>N</sub> | <sub>whether the observed opponent just claimed Riichi</sub> |
+   | <sub>.tmp_rank</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>rank of the observed opponent in the current game</sub> |
+   | <sub>.score</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>score of the observed opponent in the current game</sub> |
+   | <sub>.is_open_hand</sub> | <sub>boolean</sub> | <sub>N</sub> | <sub>whether the observed opponent has already called open melds</sub> |
+   | <sub>.turn_num</sub> | <sub>integer</sub> | <sub>N</sub> | <sub>the number of the current turn</sub> |
+   | <sub>.player_wind</sub> | <sub>integer</sub> | <sub>N</sub> | <sub>player wind is one kind of [yaku](https://en.wikipedia.org/wiki/Japanese_Mahjong#Yaku_and_yakuman)</sub> |
+   | <sub>.round_wind</sub> | <sub>integer</sub> | <sub>N</sub> | <sub>round wind is one kind of [yaku](https://en.wikipedia.org/wiki/Japanese_Mahjong#Yaku_and_yakuman)</sub> |
+   | <sub>.bonus_honors</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>all the character tiles which have [yaku](https://en.wikipedia.org/wiki/Japanese_Mahjong#Yaku_and_yakuman)</sub> |
    
 #### **(3) Information about the game table**
    | Access | Data type | Mutable | Desription |
