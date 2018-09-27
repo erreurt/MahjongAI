@@ -16,13 +16,14 @@ Also the test result of my Mahjong agent will be presented.
 ## Contents
 * [1. Game rules of Japanese Riichi Mahjong](#rules)
 * [2. Directory of the program and short explanations](#dir)
-* [3. Run the proposed Mahjong agent](#run)
-* [4. Develop your own Mahjong agent](#dev)
-    * 4.1. Output : What functions has to be implemented for your Mahjong agent
-    * 4.2. Input: What information of the game state you have access to
-* [5. Performance (Experiments result) of the proposed Mahjong agent](#res)
-   * 5.1. Convergence behavior of agent's performance
-   * 5.2. Comparison of agent's performance with that of two related works
+* [3. Performance (Experiments result) of the proposed Mahjong agent](#res)
+   * 3.1. Convergence behavior of agent's performance
+   * 3.2. Comparison of agent's performance with that of two related works
+* [4. Run the proposed Mahjong agent](#run)
+* [5. Develop your own Mahjong agent](#dev)
+    * 5.1. Output : What functions has to be implemented for your Mahjong agent
+    * 5.2. Input: What information of the game state you have access to
+
 
 
 ***
@@ -58,7 +59,53 @@ The implemented client allows one to run a Mahjong agent directly through the pr
 
 ***
 
-## <a name="run"></a>3. How to run the proposed Mahjong agent?
+## <a name="res"></a>3. Performance of the proposed Mahjong agent
+
+The proposed Mahjong agent was tested on tenhou.net. The test was carried out in two versions, i.e. one with defence model and another one without. The raw game logs and intermediate game results can be found in my another repository: https://github.com/erreurt/Experiments-result-of-mahjong-bot. 
+
+### 3.1. Convergence behavior of agent's performance
+
+For the version with defence model, 526 games were played, and for the version without defence model, 532 games were played. This is not as many as two related works, but as shown in the figure of the convergence behavior of agent's performance, 526 games are sufficient.
+
+#### Convergence behavior of agent's performance ***with*** defence model
+<img src="./figs/stats_rank_distribution.png" width="600">
+<img src="./figs/stats_wl_rate.png" width="600">
+
+#### Convergence behavior of agent's performance ***without*** defence model
+<img src="./figs/stats_rank_distribution_wo.png" width="600">
+<img src="./figs/stats_wl_rate_wo.png" width="600">
+
+### 3.2. Agent's performance compared to that of two related works
+
+Mizukami's extended work can be seen as currently the best and the most reliable Mahjong agent in English literatures. Here a comparison between the performance of my Mahjong agent and that of Mizukami's is presented:
+
+   |  | [1] | [2] | [3] | [4] |
+   | ---------- | ----------- | ----------- | ----------- | ----------- |
+   | Games played | 526 | 532 | 2634 | 1441 |
+   | 1st place rate | 23.95% | 22.65% | 24.10% | 25.30% |
+   | 2nd place rate | 26.62% | 25.92% | 28.10% | 24.80% |
+   | 3rd place rate | 31.75% | 25.71% | 24.80% | 25.10% |
+   | 4th place rate | ***17.68%*** | 25.71% | 23.00% | 24.80% |
+   | win rate | 24.68% | 26.50% | 24.50% | 25.60% |
+   | lose rate | 13.92% | 20.21% | 13.10% | 14.80% |
+   | fixed level | 2.21 Dan | 0.77 Dan | 1.14 Dan | 1.04 Dan |
+   
+   * ***[1]*** My Mahjong agent ***with*** defence model
+   
+   * ***[2]*** My Mahjong agent ***without*** defence model
+   
+   * ***[3]*** **Mizukami's extended work**: Mizukami N., Tsuruoka Y.. *Building a computer mahjong player based on monte carlo
+simulation and opponent models.* In: 2015 IEEE Conference on Computational Intelligence
+and Games (CIG), pp. 275–283. IEEE (2015)
+
+   * ***[4]*** **Mizukami et. al.**: N. Mizukami, R. Nakahari, A. Ura, M. Miwa, Y. Tsuruoka, and T. Chikayama. *Realizing
+a four-player computer mahjong program by supervised learning with isolated multi-player
+aspects.* Transactions of Information Processing Society of Japan, vol. 55, no. 11, pp. 1–11,
+2014, (in Japanese).
+
+***
+
+## <a name="run"></a>4. How to run the proposed Mahjong agent?
 To run the Mahjong agent, one has to specify a few configurations. As shown in the following example from main.py:
 ```python
 def run_example_ai():
@@ -108,9 +155,9 @@ After specifying all these configurations, just throw all these parameters to co
 
 ***
 
-## <a name="dev"></a>4. How to develop your own Mahjong agent?
+## <a name="dev"></a>5. How to develop your own Mahjong agent?
 
-### 4.1. Output: What functions should be implemented?
+### 5.1. Output: What functions should be implemented?
 
 Four functions must be implemented for the Mahjong bot, as shown in the "interface" class in ***agents.ai_interface***. It is recommended that your agent is an inheritance of the AIInterface. For a deeper explanation and a simple example of this function, please see documentation in ***agents.random_ai_example.py***.
 
@@ -138,7 +185,7 @@ class AIInterface(MainPlayer):
    
    * ***can_call_reach***: https://en.wikipedia.org/wiki/Japanese_Mahjong#R%C4%ABchi. This function decides whether the agent should claim Riichi. 
    
-### 4.2. Input: What information of the game state you have access to?
+### 5.2. Input: What information of the game state you have access to?
 
 When the Mahjong agent class is a subclass of the ***AIInterface*** class, information listed as follows can be accessed inside the agent class as specified.
 
@@ -239,49 +286,6 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
 
 ***
 
-## <a name="res"></a>5. Performance of the proposed Mahjong agent
-
-The proposed Mahjong agent was tested on tenhou.net. The test was carried out in two versions, i.e. one with defence model and another one without. The raw game logs and intermediate game results can be found in my another repository: https://github.com/erreurt/Experiments-result-of-mahjong-bot. 
-
-### 5.1. Convergence behavior of agent's performance
-
-For the version with defence model, 526 games were played, and for the version without defence model, 532 games were played. This is not as many as two related works, but as shown in the figure of the convergence behavior of agent's performance, 526 games are sufficient.
-
-#### Convergence behavior of agent's performance ***with*** defence model
-<img src="./figs/stats_rank_distribution.png" width="600">
-<img src="./figs/stats_wl_rate.png" width="600">
-
-#### Convergence behavior of agent's performance ***without*** defence model
-<img src="./figs/stats_rank_distribution_wo.png" width="600">
-<img src="./figs/stats_wl_rate_wo.png" width="600">
-
-### 5.2. Agent's performance compared to that of two related works
-
-Mizukami's extended work can be seen as currently the best and the most reliable Mahjong agent in English literatures. Here a comparison between the performance of my Mahjong agent and that of Mizukami's is presented:
-
-   |  | [1] | [2] | [3] | [4] |
-   | ---------- | ----------- | ----------- | ----------- | ----------- |
-   | Games played | 526 | 532 | 2634 | 1441 |
-   | 1st place rate | 23.95% | 22.65% | 24.10% | 25.30% |
-   | 2nd place rate | 26.62% | 25.92% | 28.10% | 24.80% |
-   | 3rd place rate | 31.75% | 25.71% | 24.80% | 25.10% |
-   | 4th place rate | ***17.68%*** | 25.71% | 23.00% | 24.80% |
-   | win rate | 24.68% | 26.50% | 24.50% | 25.60% |
-   | lose rate | 13.92% | 20.21% | 13.10% | 14.80% |
-   | fixed level | 2.21 Dan | 0.77 Dan | 1.14 Dan | 1.04 Dan |
-   
-   * ***[1]*** My Mahjong agent ***with*** defence model
-   
-   * ***[2]*** My Mahjong agent ***without*** defence model
-   
-   * ***[3]*** **Mizukami's extended work**: Mizukami N., Tsuruoka Y.. *Building a computer mahjong player based on monte carlo
-simulation and opponent models.* In: 2015 IEEE Conference on Computational Intelligence
-and Games (CIG), pp. 275–283. IEEE (2015)
-
-   * ***[4]*** **Mizukami et. al.**: N. Mizukami, R. Nakahari, A. Ura, M. Miwa, Y. Tsuruoka, and T. Chikayama. *Realizing
-a four-player computer mahjong program by supervised learning with isolated multi-player
-aspects.* Transactions of Information Processing Society of Japan, vol. 55, no. 11, pp. 1–11,
-2014, (in Japanese).
    
 
 
