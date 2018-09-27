@@ -175,7 +175,7 @@ After specifying all these configurations, just throw all these parameters to co
 
 ### 5.1. Output: What functions should be implemented?
 
-Four functions must be implemented for the Mahjong bot, as shown in the "interface" class in ***agents.ai_interface***. It is recommended that your agent is an inheritance of the AIInterface. For a deeper explanation and a simple example of this function, please see documentation in ***agents.random_ai_example.py***.
+Four functions must be implemented for the Mahjong bot, as shown in the "interface" class in ***agents.ai_interface***. It is recommended that your agent is an inheritance of the AIInterface. For a deeper explanation and a simple example of these functions, please see documentation in ***agents.random_ai_example.py***.
 
 ```python
 class AIInterface(MainPlayer):
