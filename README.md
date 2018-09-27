@@ -171,7 +171,7 @@ def run_jianyang_ai():
 
 6. **Logger**: Two parameters are required for initialising the logger. The first one is the user-defined logger's ID, such that developers can freely name his/her test history. 
 
-After specifying all these configurations, just throw all these parameters to connect_and_play(). Then it's time watch the show of your Mahjong agent!!!
+After specifying all these configurations, just throw all these parameters to ***connect_and_play()***. Then it's time watch the show of your Mahjong agent!!!
 
 ***
 
@@ -211,13 +211,6 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
 
 #### **(1) Agent's own game state**
 
-##### Agent's personal infomation
-   | Access  | Data type | Mutable | Desription |
-   | ---------- | ----------- | ----------- | ----------- |
-   | <sub>self.name</sub> | <sub>string</sub> | <sub>Y</sub> | <sub>name of the account</sub> |
-   | <sub>self.level</sub> | <sub>string</sub> | <sub>Y</sub> | <sub>level of the account</sub> |
-   
-##### Agent's tiles
    | Access  | Data type | Mutable | Desription |
    | ---------- | ----------- | ----------- | ----------- |
    | <sub>self.tiles136</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>hand tiles in 136-form</sub> |
@@ -231,10 +224,8 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
    | <sub>self.chow34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called chow melds of the agent in 34-form, each list in the list corresponds to a chow meld</sub> |
    | <sub>self.minkan34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called minkan melds of the agent in 34-form, each list in the list corresponds to a minkan meld</sub> |
    | <sub>self.ankan34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called ankan melds of the agent in 34-form, each list in the list corresponds to a ankan meld</sub> |
-  
-##### Agent's game status
-   | Access  | Data type | Mutable | Desription |
-   | ---------- | ----------- | ----------- | ----------- |
+   | <sub>self.name</sub> | <sub>string</sub> | <sub>Y</sub> | <sub>name of the account</sub> |
+   | <sub>self.level</sub> | <sub>string</sub> | <sub>Y</sub> | <sub>level of the account</sub> |
    | <sub>self.seat</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>seat ID, the agent always has 0</sub> |
    | <sub>self.dealer_seat</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>the seat ID of the dealer</sub>  |
    | <sub>self.is_dealer</sub> | <sub>boolean</sub> | <sub>N</sub> | <sub>whether the agent is dealer or not</sub> |
@@ -252,13 +243,6 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
 #### **(2) Opponents' game state**
    One can access to the instance of opponent class by calling ***self.game_table.get_player(i)*** with i equals 1,2,3, which indicates the corresponding id of the opponent.  
    
-   ##### Opponents' personal infomation
-   | Access  | Data type | Mutable | Desription |
-   | ---------- | ----------- | ----------- | ----------- |
-   | <sub>self.game_table.get_player(i).name</sub> | <sub>string</sub> | <sub>Y</sub> | <sub>name of the opponent</sub> |
-   | <sub>self.game_table.get_player(i).level</sub> | <sub>string</sub> | <sub>Y</sub> | <sub>level of the opponent</sub> |
-   
-##### Opponents' open tiles
    | Access  | Data type | Mutable | Desription |
    | ---------- | ----------- | ----------- | ----------- |
    | <sub>self.game_table.get_player(i).discard136</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>the discards of the observed opponent in temperal order, in 136-from</sub> |
@@ -271,10 +255,8 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
    | <sub>self.game_table.get_player(i).minkan34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called minkan melds of the observed opponent  in 34-form, each list in the list corresponds to a minkan meld</sub> |
    | <sub>self.game_table.get_player(i).ankan34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called ankan melds of the observed opponent  in 34-form, each list in the list corresponds to a ankan meld</sub> |
    | <sub>self.game_table.get_player(i).safe_tiles</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>tiles in 34-form which are absolutely safe for the agent, i.e. the observed opponent cannot win with these tiles</sub> |
-  
-##### Opponents' game status
-   | Access | Data type | Mutable | Desription |
-   | ---------- | ----------- | ----------- | ----------- |
+   | <sub>self.game_table.get_player(i).name</sub> | <sub>string</sub> | <sub>Y</sub> | <sub>name of the opponent</sub> |
+   | <sub>self.game_table.get_player(i).level</sub> | <sub>string</sub> | <sub>Y</sub> | <sub>level of the opponent</sub> |
    | <sub>self.game_table.get_player(i).seat</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>seat ID of the observed opponent</sub> |
    | <sub>self.game_table.get_player(i).dealer_seat</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>the seat ID of the dealer</sub>  |
    | <sub>self.game_table.get_player(i).is_dealer</sub> | <sub>boolean</sub> | <sub>N</sub> | <sub>whether the observed opponent is dealer or not</sub> |
