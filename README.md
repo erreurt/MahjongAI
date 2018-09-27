@@ -121,6 +121,22 @@ def run_example_ai():
     connect_and_play(ai_obj, opponent_class, user, user_name, '0', game_type, logger_obj)  # play one game
 ```
 
+```python
+def run_jianyang_ai():
+    ai_module = importlib.import_module("agents.jianyang_ai")
+    waiting_prediction_class = getattr(ai_module, "EnsembleCLF")
+    ensemble_clfs = waiting_prediction_class()
+    ai_class = getattr(ai_module, "MLAI")
+    ai_obj = ai_class(ensemble_clfs)  # [1]
+    opponent_class = getattr(ai_module, "OppPlayer")  # [2]
+    user = "ID696E3BCC-hLHNE8Wf"  # [3]
+    user_name = "tst_tio"  # [4]
+    game_type = '1'  # [5]
+    logger_obj = Logger("log_jianyang_ai_1", user_name)  # [6]
+    connect_and_play(ai_obj, opponent_class, user, user_name, '0', game_type, logger_obj)
+
+```
+
 1. **AI instance**: A class instance of the Mahjong agent. In this repository two versions of Mahjong agent are provided. The first one is in ***agents.random_ai_example.py***, this is a demo class for showing potential developers how to implement his/her own agents. The second one is in ***agents.jianyang_ai.py*** and it is my own Mahjong agent for my master thesis. 
 
 2. **Opponent player class**: The class of Opponent player. One can use the default class OpponentPlayer in ***client.mahjong_player***. If one has extended the OpponentPlayer class due to extra needs, this variable should be set to your corresponding class.
