@@ -14,15 +14,11 @@ Also the test result of my Mahjong agent will be presented (section 3).
 # Contents
 * [1. Game rules of Japanese Riichi Mahjong](#rules)
 * [2. Directory of the program and short explanations](#dir)
-* [3. Performance (Experiments result) of the proposed Mahjong agent](#res)
-   * 3.1. Convergence behavior of agent's performance
-   * 3.2. Comparison of agent's performance with that of two related works
-* [4. Run the proposed Mahjong agent](#run)
-* [5. Develop your own Mahjong agent](#dev)
-    * 5.1. Output : What functions has to be implemented for your Mahjong agent
-    * 5.2. Input: What information of the game state you have access to
+* [3. Overview of the proposed Mahjong bot](#over)
+* [4. Experiments result of the proposed Mahjong bot](#res)
+* [5. Run the proposed Mahjong bot](#run)
+* [6. Develop your own Mahjong bot](#dev)
 * [Acknowledgments](#ack)
-
 
 
 ***
@@ -59,23 +55,31 @@ The implemented client allows one to run a Mahjong agent directly through the pr
 
 ***
 
-# <a name="res"></a>3. Performance of the proposed Mahjong agent
+# <a name="over"></a>3. Overview of the proposed Mahjong bot
+
+### Discard policy
+<img src="./figs/discard_policy.png" width="650">
+
+### Overview of the implementation
+<img src="./figs/overview.png" width="900">
+
+# <a name="res"></a>4. Performance of the proposed Mahjong agent
 
 The proposed Mahjong agent was tested on tenhou.net. The test was carried out in two versions, i.e. one with defence model and another one without. The raw game logs and intermediate game results can be found in my another repository: https://github.com/erreurt/Experiments-result-of-mahjong-bot. 
 
-### 3.1. Convergence behavior of agent's performance
+### 4.1. Convergence behavior of agent's performance
 
 For the version with defence model, 526 games were played, and for the version without defence model, 532 games were played. This is not as many as two related works, but as shown in the figure of the convergence behavior of agent's performance, 526 games are sufficient.
 
 #### Convergence behavior of agent's performance ***with*** defence model
-<img src="./figs/stats_rank_distribution.png" width="600">
-<img src="./figs/stats_wl_rate.png" width="600">
+<img src="./figs/stats_rank_distribution.png" width="550">
+<img src="./figs/stats_wl_rate.png" width="550">
 
 #### Convergence behavior of agent's performance ***without*** defence model
-<img src="./figs/stats_rank_distribution_wo.png" width="600">
-<img src="./figs/stats_wl_rate_wo.png" width="600">
+<img src="./figs/stats_rank_distribution_wo.png" width="550">
+<img src="./figs/stats_wl_rate_wo.png" width="550">
 
-### 3.2. Agent's performance compared to that of two related works
+### 4.2. Agent's performance compared to that of two related works
 
 Mizukami's extended work can be seen as currently the best and the most reliable Mahjong agent in English literatures. Here a comparison between the performance of my Mahjong agent and that of Mizukami's is presented:
 
@@ -105,7 +109,7 @@ aspects.* Transactions of Information Processing Society of Japan, vol. 55, no. 
 
 ***
 
-# <a name="run"></a>4. How to run the proposed Mahjong agent?
+# <a name="run"></a>5. How to run the proposed Mahjong agent?
 To run the Mahjong agent, one has to specify a few configurations. As shown in the following example from main.py:
 ```python
 def run_example_ai():
@@ -171,9 +175,9 @@ After specifying all these configurations, just throw all these parameters to co
 
 ***
 
-# <a name="dev"></a>5. How to develop your own Mahjong agent?
+# <a name="dev"></a>6. How to develop your own Mahjong agent?
 
-### 5.1. Output: What functions should be implemented?
+### 6.1. Output: What functions should be implemented?
 
 Four functions must be implemented for the Mahjong bot, as shown in the "interface" class in ***agents.ai_interface***. It is recommended that your agent is an inheritance of the AIInterface. For a deeper explanation and a simple example of these functions, please see documentation in ***agents.random_ai_example.py***.
 
@@ -201,7 +205,7 @@ class AIInterface(MainPlayer):
    
    * ***can_call_reach***: https://en.wikipedia.org/wiki/Japanese_Mahjong#R%C4%ABchi. This function decides whether the agent should claim Riichi. 
    
-### 5.2. Input: What information of the game state you have access to?
+### 6.2. Input: What information of the game state you have access to?
 
 When the Mahjong agent class is a subclass of the ***AIInterface*** class, information listed as follows can be accessed inside the agent class as specified.
 
