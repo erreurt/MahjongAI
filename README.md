@@ -19,7 +19,8 @@ Also the test result of my Mahjong agent will be presented.
 * [3. Develop your own Mahjong agent](#dev)
     * 3.1. Output : What functions has to be implemented for your Mahjong agent
     * 3.2. Input: What information of the game state you have access to
-    * 3.3. Other details of the programm
+* [4. Directory of the program and short explanations](#dir)
+
 ***
 
 ## <a name="rules"></a>1. Game rules of Japanese Riichi Mahjong
@@ -208,3 +209,19 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
    | <sub>self.last_discard</sub> | <sub>integer</sub> | <sub>N</sub> | <sub>The very latest discard of opponent, this tile is absolutely safe by rules</sub> |
 
 ***
+
+
+
+## <a name="dir"></a>4. Directory of the program and short explanations
+
+> MahjongAI
+>> agents
+>>> utils
+>>>> clfs: multiple multilayer perceptrons classifiers
+>>>> wait_calc.py
+>>>> win_calc.py
+
+>>> ai_interface.py
+>>> jianyang_ai.py
+>>> random_ai_example.py
+
