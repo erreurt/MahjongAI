@@ -1,9 +1,7 @@
 # README -- MahjongAI
-This file is to show how to run the intelligent Mahjong agent.
+This file is to show how to run the intelligent Mahjong agent (section 4). For developers who are interested in implementing own agents, instructions on how to use the client are given (section 5).
 
-For developers who are interested in implementing own agents, instructions on how to use the client are given.
-
-Also the test result of my Mahjong agent will be presented.
+Also the test result of my Mahjong agent will be presented (section 3).
 
 ****
 
