@@ -247,7 +247,7 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
    | ---------- | ----------- | ----------- | ----------- |
    | <sub>.discard136</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>the discards of the observed opponent in 136-from</sub> |
    | <sub>.discard34</sub> | <sub>list of integers</sub> | <sub>N</sub> | <sub>the discards of the observed opponent in 34-form</sub> |
-   | <sub>.meld136</sub> | <sub>list of Meld instances</sub> | <sub>Y</sub> | <sub>the called melds of the observed opponent, instances of class Meld in ***client.mahjong_meld.py***</sub> |
+   | <sub>.meld136</sub> | <sub>list of ***Meld*** instances</sub> | <sub>Y</sub> | <sub>the called melds of the observed opponent
    | <sub>.total_melds34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called melds of the observed opponent  in 34-form</sub> |
    | <sub>.meld34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called pon/chow melds of the observed opponent  in 34-form</sub> |
    | <sub>.pon34</sub> | <sub>list of list of integers</sub> | <sub>N</sub> | <sub>the called pon melds of the observed opponent  in 34-form</sub> |
@@ -271,20 +271,23 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
    | <sub>.bonus_honors</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>all the character tiles which have [yaku](https://en.wikipedia.org/wiki/Japanese_Mahjong#Yaku_and_yakuman)</sub> |
    
 #### **(3) Information about the game table**
+
+To access information about the game table, one can call ***self.game_table***
+
    | Access | Data type | Mutable | Desription |
    | ---------- | ----------- | ----------- | ----------- |
-   | <sub>self.game_table.bot</sub> | <sub>instance of agent class</sub> | <sub>Y</sub> | <sub>class instance of the agent</sub> |
-   | <sub>self.game_table.get_player(i)</sub> | <sub>instance of opponent class</sub> | <sub>Y</sub> | <sub>class instance of the opponent, i=1,2,3</sub> |
-   | <sub>self.game_table.dealer_seat</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>seat ID of the dealer</sub> |
-   | <sub>self.game_table.bonus_indicator</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>[bonus indicators](https://en.wikipedia.org/wiki/Japanese_Mahjong#Dora) in 136-form</sub> |
-   | <sub>self.game_table.round_number</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>round number</sub> |
-   | <sub>self.reach_sticks</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>How many Riichi sticks are on the table. The player who win next will receive all the points of these Riichi sticks</sub> |
-   | <sub>self.game_table.honba_sticks</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>How many honba sticks are on the table. The player will have extra points according to honba sticks if it wins</sub> |
-   | <sub>self.game_table.count_ramaining_tiles</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>The number of remaining unreavealed tiles</sub> |
-   | <sub>self.game_table.revealed</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>Each element in the list indicates how many copies of this specific tile has been revealed (discards, open melds, bonus indicators etc)</sub> |
-   | <sub>self.game_table.round_win</sub> | <sub>integer</sub> | <sub>N</sub> | <sub>round wind is one kind of [yaku](https://en.wikipedia.org/wiki/Japanese_Mahjong#Yaku_and_yakuman)</sub> |
-   | <sub>self.game_table.bonus_tiles</sub> | <sub>list of integers</sub> | <sub>N</sub> | <sub>List of bonus tiles. Each occurance of bonus tiles in hand tiles counts as a [yaku](https://en.wikipedia.org/wiki/Japanese_Mahjong#Yaku_and_yakuman)</sub> |
-   | <sub>self.last_discard</sub> | <sub>integer</sub> | <sub>N</sub> | <sub>The very latest discard of opponent, this tile is absolutely safe by rules</sub> |
+   | <sub>.bot</sub> | <sub>instance of agent class</sub> | <sub>Y</sub> | <sub>class instance of the agent</sub> |
+   | <sub>.get_player(i)</sub> | <sub>instance of opponent class</sub> | <sub>Y</sub> | <sub>class instance of the opponent, i=1,2,3</sub> |
+   | <sub>.dealer_seat</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>seat ID of the dealer</sub> |
+   | <sub>.bonus_indicator</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>[bonus indicators](https://en.wikipedia.org/wiki/Japanese_Mahjong#Dora) in 136-form</sub> |
+   | <sub>.round_number</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>round number</sub> |
+   | <sub>.reach_sticks</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>How many Riichi sticks are on the table. The player who win next will receive all the points of these Riichi sticks</sub> |
+   | <sub>.honba_sticks</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>How many honba sticks are on the table. The player will have extra points according to honba sticks if it wins</sub> |
+   | <sub>.count_ramaining_tiles</sub> | <sub>integer</sub> | <sub>Y</sub> | <sub>The number of remaining unreavealed tiles</sub> |
+   | <sub>.revealed</sub> | <sub>list of integers</sub> | <sub>Y</sub> | <sub>Each element in the list indicates how many copies of this specific tile has been revealed (discards, open melds, bonus indicators etc)</sub> |
+   | <sub>.round_win</sub> | <sub>integer</sub> | <sub>N</sub> | <sub>round wind is one kind of [yaku](https://en.wikipedia.org/wiki/Japanese_Mahjong#Yaku_and_yakuman)</sub> |
+   | <sub>.bonus_tiles</sub> | <sub>list of integers</sub> | <sub>N</sub> | <sub>List of bonus tiles. Each occurance of bonus tiles in hand tiles counts as a [yaku](https://en.wikipedia.org/wiki/Japanese_Mahjong#Yaku_and_yakuman)</sub> |
+   | <sub>.last_discard</sub> | <sub>integer</sub> | <sub>N</sub> | <sub>The very latest discard of opponent, this tile is absolutely safe by rules</sub> |
 
 ***
 # <a name="ack"></a>Acknowledgments
