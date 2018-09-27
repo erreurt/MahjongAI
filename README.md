@@ -239,7 +239,7 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
 
 ***
 
-## <a name="dev"></a>5. Performance of the proposed Mahjong agent
+## <a name="res"></a>5. Performance of the proposed Mahjong agent
 
 The proposed Mahjong agent was tested on tenhou.net. The test was carried out in two versions, i.e. one with defence model and another one without. The raw game logs and intermediate game results can be found in my another repository: https://github.com/erreurt/Experiments-result-of-mahjong-bot. 
 
