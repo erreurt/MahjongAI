@@ -21,6 +21,7 @@ Also the test result of my Mahjong agent will be presented (section 3).
 * [5. Develop your own Mahjong agent](#dev)
     * 5.1. Output : What functions has to be implemented for your Mahjong agent
     * 5.2. Input: What information of the game state you have access to
+* [Acknowledgments](#ack)
 
 
 
@@ -300,10 +301,11 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
    | <sub>self.last_discard</sub> | <sub>integer</sub> | <sub>N</sub> | <sub>The very latest discard of opponent, this tile is absolutely safe by rules</sub> |
 
 ***
+# <a name="ack"></a>Acknowledgments
 
 ### Finally, I would like to warmly thank 
   
-  * ***my Professor Johhanes Fürnkranz (TU Darmstadt Knowledge Engineering Group)*** 
+  * ***my professor Johhanes Fürnkranz (TU Darmstadt Knowledge Engineering Group)*** 
   
   * ***my supervisor Tobias Joppen (TU Darmstadt Knowledge Engineering Group)***
 
