@@ -214,14 +214,23 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
 
 ## <a name="dir"></a>4. Directory of the program and short explanations
 
-> MahjongAI
->> agents
->>> utils
->>>> clfs: multiple multilayer perceptrons classifiers
->>>> wait_calc.py
->>>> win_calc.py
-
->>> ai_interface.py
->>> jianyang_ai.py
->>> random_ai_example.py
+* MahjongAI
+   * agents
+      * utils
+         * clfs: multiple multilayer perceptrons classifiers
+         * wait_calc.py
+         * win_calc.py
+      * ai_interface.py
+      * jianyang_ai.py
+      * random_ai_example.py
+   * client
+      * mahjong_meld.py
+      * mahjong_player.py
+      * mahjong_table.py
+      * mahjong_tile.py
+      * tenhou_client.py
+      * tenhou_parser.py
+   * logger
+      * logger_handler.py
+   * main.py
 
