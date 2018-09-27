@@ -305,7 +305,7 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
 
 ### Finally, I would like to warmly thank 
   
-  * ***my professor Johhanes Fürnkranz (TU Darmstadt Knowledge Engineering Group)*** 
+  * ***my professor Johannes Fürnkranz (TU Darmstadt Knowledge Engineering Group)*** 
   
   * ***my supervisor Tobias Joppen (TU Darmstadt Knowledge Engineering Group)***
 
