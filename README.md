@@ -226,9 +226,9 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
       * ***random_ai_example.py*** <sub>the example Mahjong agent class for giving a simple explanation on how to develop your own Mahjong agent</sub>
    * **client**
       * ***mahjong_meld.py*** <sub>class of Mahjong meld</sub>
-      * ***mahjong_player.py*** <sub>class of Mahjong tile</sub>
+      * ***mahjong_tile.py*** <sub>class of Mahjong tile</sub>
       * ***mahjong_table.py*** <sub>class of Mahjong game table, for storing game state</sub>
-      * ***mahjong_tile.py*** <sub>class of Mahjong player, for storing players' tiles and game status</sub>
+      * ***mahjong_player.py*** <sub>class of Mahjong player, for storing players' tiles and game status</sub>
       * ***tenhou_client.py*** <sub>class of client for tenhou.net. This class implements the game just as the browser version</sub>
       * ***tenhou_parser.py*** <sub>class of parser for tenhou.net server. It provides decoding methods for messages reveived from the tenhou.net server</sub>
    * **logger**
