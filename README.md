@@ -15,11 +15,12 @@ Also the test result of my Mahjong agent will be presented.
 
 ## Contents
 * [1. Game rules of Japanese Riichi Mahjong](#rules)
-* [2. Run the proposed Mahjong agent](#run)
-* [3. Develop your own Mahjong agent](#dev)
-    * 3.1. Output : What functions has to be implemented for your Mahjong agent
-    * 3.2. Input: What information of the game state you have access to
-* [4. Directory of the program and short explanations](#dir)
+* [2. Directory of the program and short explanations](#dir)
+* [3. Run the proposed Mahjong agent](#run)
+* [4. Develop your own Mahjong agent](#dev)
+    * 4.1. Output : What functions has to be implemented for your Mahjong agent
+    * 4.2. Input: What information of the game state you have access to
+
 
 ***
 
@@ -29,7 +30,32 @@ Refer to https://en.wikipedia.org/wiki/Japanese_Mahjong for game rules of Japane
 The implemented client allows one to run a Mahjong agent directly through the programm, instead of doing this in the web browser. The site for online playing of Japanese Riichi Mahjong is http://tenhou.net/
 ***
 
-## <a name="run"></a>2. How to run the proposed Mahjong agent?
+## <a name="dir"></a>2. Directory of the program and short explanations
+
+* **MahjongAI**
+   * **agents**
+      * **utils**
+         * **clfs**
+            * multiple multilayer perceptrons classifiers <sub>several MLP classifiers for predicting dangerous tiles</sub>
+         * ***wait_calc.py*** <sub>contains functions that calculate whether the hand tiles are in waiting state, return the corresponding winning score, the partition, the to be discarded tile</sub>
+         * ***win_calc.py*** <sub>contains functions that calculate the winning score for a specific partition of hand tiles</sub>
+      * ***ai_interface.py*** <sub>the class that should be inherited while developing your own Mahjong agent</sub>
+      * ***jianyang_ai.py*** <sub>the proposed Mahjong agent class for my master thesis</sub>
+      * ***random_ai_example.py*** <sub>the example Mahjong agent class for giving a simple explanation on how to develop your own Mahjong agent</sub>
+   * **client**
+      * ***mahjong_meld.py*** <sub>class of Mahjong meld</sub>
+      * ***mahjong_tile.py*** <sub>class of Mahjong tile</sub>
+      * ***mahjong_table.py*** <sub>class of Mahjong game table, for storing game state</sub>
+      * ***mahjong_player.py*** <sub>class of Mahjong player, for storing players' tiles and game status</sub>
+      * ***tenhou_client.py*** <sub>class of client for tenhou.net. This class implements the game just as the browser version</sub>
+      * ***tenhou_parser.py*** <sub>class of parser for tenhou.net server. It provides decoding methods for messages reveived from the tenhou.net server</sub>
+   * **logger**
+      * ***logger_handler.py*** <sub>class of logging, for storing game run and game results</sub>
+   * ***main.py*** <sub>contains example of how to run the Mahjong agent</sub>
+
+***
+
+## <a name="run"></a>3. How to run the proposed Mahjong agent?
 To run the Mahjong agent, one has to specify a few configurations. As shown in the following example from main.py:
 ```python
 def run_example_ai():
@@ -79,9 +105,9 @@ After specifying all these configurations, just throw all these parameters to co
 
 ***
 
-## <a name="dev"></a>3. How to develop your own Mahjong agent?
+## <a name="dev"></a>4. How to develop your own Mahjong agent?
 
-### 3.1. Output: What functions should be implemented?
+### 4.1. Output: What functions should be implemented?
 
 Four functions must be implemented for the Mahjong bot, as shown in the "interface" class in ***agents.ai_interface***. It is recommended that your agent is an inheritance of the AIInterface. For a deeper explanation and a simple example of this function, please see documentation in ***agents.random_ai_example.py***.
 
@@ -109,7 +135,7 @@ class AIInterface(MainPlayer):
    
    * ***can_call_reach***: https://en.wikipedia.org/wiki/Japanese_Mahjong#R%C4%ABchi. This function decides whether the agent should claim Riichi. 
    
-### 3.2. Input: What information of the game state you have access to?
+### 4.2. Input: What information of the game state you have access to?
 
 When the Mahjong agent class is a subclass of the ***AIInterface*** class, information listed as follows can be accessed inside the agent class as specified.
 
@@ -210,28 +236,4 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
 
 ***
 
-
-
-## <a name="dir"></a>4. Directory of the program and short explanations
-
-* **MahjongAI**
-   * **agents**
-      * **utils**
-         * **clfs**
-            * multiple multilayer perceptrons classifiers <sub>several MLP classifiers for predicting dangerous tiles</sub>
-         * ***wait_calc.py*** <sub>contains functions that calculate whether the hand tiles are in waiting state, return the corresponding winning score, the partition, the to be discarded tile</sub>
-         * ***win_calc.py*** <sub>contains functions that calculate the winning score for a specific partition of hand tiles</sub>
-      * ***ai_interface.py*** <sub>the class that should be inherited while developing your own Mahjong agent</sub>
-      * ***jianyang_ai.py*** <sub>the proposed Mahjong agent class for my master thesis</sub>
-      * ***random_ai_example.py*** <sub>the example Mahjong agent class for giving a simple explanation on how to develop your own Mahjong agent</sub>
-   * **client**
-      * ***mahjong_meld.py*** <sub>class of Mahjong meld</sub>
-      * ***mahjong_tile.py*** <sub>class of Mahjong tile</sub>
-      * ***mahjong_table.py*** <sub>class of Mahjong game table, for storing game state</sub>
-      * ***mahjong_player.py*** <sub>class of Mahjong player, for storing players' tiles and game status</sub>
-      * ***tenhou_client.py*** <sub>class of client for tenhou.net. This class implements the game just as the browser version</sub>
-      * ***tenhou_parser.py*** <sub>class of parser for tenhou.net server. It provides decoding methods for messages reveived from the tenhou.net server</sub>
-   * **logger**
-      * ***logger_handler.py*** <sub>class of logging, for storing game run and game results</sub>
-   * ***main.py*** <sub>contains example of how to run the Mahjong agent</sub>
 
