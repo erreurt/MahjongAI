@@ -37,7 +37,7 @@ def run_example_ai():
     user = "ID696E3BCC-hLHNE8Wf"  # [3]
     user_name = "tst_tio"  # [4]
     game_type = '1'  # [5]
-    logger_obj = Logger("log1", user_name)  [6]
+    logger_obj = Logger("log1", user_name)  # [6]
     connect_and_play(ai_obj, opponent_class, user, user_name, '0', game_type, logger_obj)  # play one game
 ```
 
