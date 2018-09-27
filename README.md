@@ -31,10 +31,10 @@ The implemented client allows one to run a Mahjong agent directly through the pr
 
 # <a name="dir"></a>2. Directory of the program and short explanations
 
-* **MahjongAI**
-   * **agents**
-      * **utils**
-         * **clfs**
+* **[MahjongAI]**
+   * **[agents]**
+      * **[utils]**
+         * **[clfs]**
             * multiple multilayer perceptrons classifiers <sub>several MLP classifiers for predicting dangerous tiles</sub>
             * ......
          * ***wait_calc.py*** <sub>contains functions that calculate whether the hand tiles are in waiting state, return the corresponding winning score, the partition, the to be discarded tile</sub>
@@ -42,14 +42,14 @@ The implemented client allows one to run a Mahjong agent directly through the pr
       * ***ai_interface.py*** <sub>the class that should be inherited while developing your own Mahjong agent</sub>
       * ***jianyang_ai.py*** <sub>the proposed Mahjong agent class for my master thesis</sub>
       * ***random_ai_example.py*** <sub>the example Mahjong agent class for giving a simple explanation on how to develop your own Mahjong agent</sub>
-   * **client**
+   * **[client]**
       * ***mahjong_meld.py*** <sub>class of Mahjong meld</sub>
       * ***mahjong_tile.py*** <sub>class of Mahjong tile</sub>
       * ***mahjong_table.py*** <sub>class of Mahjong game table, for storing game state</sub>
       * ***mahjong_player.py*** <sub>class of Mahjong player, for storing players' tiles and game status</sub>
       * ***tenhou_client.py*** <sub>class of client for tenhou.net. This class implements the game just as the browser version</sub>
       * ***tenhou_parser.py*** <sub>class of parser for tenhou.net server. It provides decoding methods for messages reveived from the tenhou.net server</sub>
-   * **logger**
+   * **[logger]**
       * ***logger_handler.py*** <sub>class of logging, for storing game run and game results</sub>
    * ***main.py*** <sub>contains example of how to run the Mahjong agent</sub>
 
