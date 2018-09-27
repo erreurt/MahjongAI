@@ -110,6 +110,8 @@ class AIInterface(MainPlayer):
    
 ### 3.2. Input: What information of the game state you have access to?
 
+When the Mahjong agent class is a subclass of the ***AIInterface*** class, information listed as follows can be accessed inside the agent class as specified.
+
 #### **(1) Agent's own game state**
 
 ##### Agent's personal infomation
