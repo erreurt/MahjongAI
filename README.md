@@ -301,6 +301,6 @@ When the Mahjong agent class is a subclass of the ***AIInterface*** class, infor
 
 ***
 
-   
+Finally, I would like to warmly thank my Professor Johhanes Fürnkranz and my supervisor Tobias Joppen at TU Darmstadt. You made it possible for me to investigate Mahjong agent as my master's thesis. Thanks for letting me combining my hobbies with what I have learned in the university. 
 
 
