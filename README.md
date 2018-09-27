@@ -41,6 +41,7 @@ The implemented client allows one to run a Mahjong agent directly through the pr
       * **utils**
          * **clfs**
             * multiple multilayer perceptrons classifiers <sub>several MLP classifiers for predicting dangerous tiles</sub>
+            * ......
          * ***wait_calc.py*** <sub>contains functions that calculate whether the hand tiles are in waiting state, return the corresponding winning score, the partition, the to be discarded tile</sub>
          * ***win_calc.py*** <sub>contains functions that calculate the winning score for a specific partition of hand tiles</sub>
       * ***ai_interface.py*** <sub>the class that should be inherited while developing your own Mahjong agent</sub>
