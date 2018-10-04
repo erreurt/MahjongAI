@@ -1,6 +1,6 @@
 # README -- MahjongAI
 
-|Author|Jianyang Tang|
+|Author|Jianyang Tang (Thomas)|
 |---|---
 |E-mail|jian4yang2.tang1@gmail.com
 
