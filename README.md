@@ -22,6 +22,12 @@
 Refer to https://en.wikipedia.org/wiki/Japanese_Mahjong for game rules of Japanese Riichi Mahjong. 
 
 The implemented client allows one to run a Mahjong agent directly through the programm, instead of doing this in the web browser. The site for online playing of Japanese Riichi Mahjong is http://tenhou.net/
+
+### The Mahjong table
+The left side is a typical scenary of Japanese Riichi Mahjong table. This picture is screenshot from the GUI implemented for debugging use.
+<img src="./figs/GUI.png" width="850">
+
+
 ***
 
 # <a name="dir"></a>2. Directory of the program and short explanations
