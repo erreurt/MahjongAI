@@ -1,6 +1,6 @@
 # README -- MahjongAI
 
-|Author|Jianyang Tang|
+|Author|Jianyang Tang (Thomas)|
 |---|---
 |E-mail|jian4yang2.tang1@gmail.com
 
@@ -38,6 +38,7 @@ The implemented client allows one to run a Mahjong agent directly through the pr
       * ***jianyang_ai.py*** <sub>the proposed Mahjong agent class for my master thesis</sub>
       * ***random_ai_example.py*** <sub>the example Mahjong agent class for giving a simple explanation on how to develop your own Mahjong agent</sub>
    * **[client]**
+      * **[tilespng]** <sub>Pics used for GUI</sub>
       * ***mahjong_meld.py*** <sub>class of Mahjong meld</sub>
       * ***mahjong_tile.py*** <sub>class of Mahjong tile</sub>
       * ***mahjong_table.py*** <sub>class of Mahjong game table, for storing game state</sub>
@@ -47,6 +48,7 @@ The implemented client allows one to run a Mahjong agent directly through the pr
    * **[logger]**
       * ***logger_handler.py*** <sub>class of logging, for storing game run and game results</sub>
    * ***main.py*** <sub>contains example of how to run the Mahjong agent</sub>
+   * ***gui_main.py*** <sub>contains example of how to run the Mahjong agent with GUI</sub>
 
 ***
 
@@ -166,7 +168,7 @@ def run_jianyang_ai():
 
 6. **Logger**: Two parameters are required for initialising the logger. The first one is the user-defined logger's ID, such that developers can freely name his/her test history. 
 
-After specifying all these configurations, just throw all these parameters to ***connect_and_play()***. Then it's time watch the show of your Mahjong agent!!!
+After specifying all these configurations, just throw all these parameters to **connect_and_play()**. Then it's time watch the show of your Mahjong agent!!!
 
 ***
 
