@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 from tkinter import *
-from PIL import ImageTk, Image
+from PIL import ImageTk, Image, ImageFont, ImageDraw
 from main import run_jianyang_ai
 
 
