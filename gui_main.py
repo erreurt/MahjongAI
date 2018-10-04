@@ -546,7 +546,8 @@ class TableDisplay:
     def add_name_and_scores(self, names, scores, levels):
         coords = [[540, 610], [610, 130], [130, 90], [90, 540]]
         for i in range(4):
-            self._draw_name(coords[i][0], coords[i][1], names[i], scores[i], levels[i], i)
+            level = "Bot  {}".format(levels[i]) if i == 0 else "P{}  {}".format(i, levels[i])
+            self._draw_name(coords[i][0], coords[i][1], names[i], scores[i], level, i)
         self.cvs.update()
 
     def add_bonus_indicator(self, tile136):
