@@ -317,10 +317,6 @@ class TenhouClient:
 
         # display in GUI
         if self.drawer:
-            names = [self.game_table.get_player(i).name for i in range(0, 4)]
-            scores = [self.game_table.get_player(i).score for i in range(0, 4)]
-            levels = [self.game_table.get_player(i).level for i in range(0, 4)]
-            self.drawer.add_name_and_scores(names, scores, levels)
             self.drawer.init_hand(tiles)
             self.drawer.init_round_info(
                 init_info['round_number'] + 1,
@@ -330,6 +326,10 @@ class TenhouClient:
             )
             for indicator in init_info['bonus_tile_indicator']:
                 self.drawer.add_bonus_indicator(indicator)
+            names = [self.game_table.get_player(i).name for i in range(0, 4)]
+            scores = [self.game_table.get_player(i).score for i in range(0, 4)]
+            levels = [self.game_table.get_player(i).level for i in range(0, 4)]
+            self.drawer.add_name_and_scores(names, scores, levels)
 
         # display initial message in logs
         self._log('    ' + '-' * 50)

@@ -1,0 +1,13 @@
+2018-10-04 03:09:41:     User(ID696E3BCC-hLHNE8Wf) was authenticated successfully
+2018-10-04 03:09:41: Unexpected exception
+Traceback (most recent call last):
+  File "/Users/Thomas/PycharmProjects/MahjongAI/main.py", line 17, in connect_and_play
+    return client.start_game()
+  File "/Users/Thomas/PycharmProjects/MahjongAI/client/tenhou_client.py", line 100, in start_game
+    if not self._looking_for_a_game():
+  File "/Users/Thomas/PycharmProjects/MahjongAI/client/tenhou_client.py", line 211, in _looking_for_a_game
+    self.drawer and self.drawer.is_searching("Search for a game...")
+AttributeError: 'Canvas' object has no attribute 'is_searching'
+2018-10-04 03:09:41: End the game...
+2018-10-04 03:09:41:     Game was ended unexpected
+2018-10-04 03:09:41: 

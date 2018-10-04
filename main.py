@@ -48,7 +48,7 @@ def run_example_ai():
     connect_and_play(ai_obj, opponent_class, user, user_name, '0', game_type, logger_obj)  # play one game
 
 
-def run_jianyang_ai():
+def run_jianyang_ai(drawer=None):
     ai_module = importlib.import_module("agents.jianyang_ai")
     waiting_prediction_class = getattr(ai_module, "EnsembleCLF")
     ensemble_clfs = waiting_prediction_class()
@@ -63,7 +63,7 @@ def run_jianyang_ai():
 
     logger_obj = Logger("log_jianyang_ai_1", user_name)  # two arguments: id of your test epoch, user name
 
-    connect_and_play(ai_obj, opponent_class, user, user_name, '0', game_type, logger_obj)  # play one game
+    connect_and_play(ai_obj, opponent_class, user, user_name, '0', game_type, logger_obj, drawer)  # play one game
 
 
 def main():
