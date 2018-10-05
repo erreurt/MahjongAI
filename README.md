@@ -1,5 +1,7 @@
 # README -- MahjongAI
 
+#### Mahjong is a "Constraint satisfaction optimisation" multiplayer strategic board game
+
 |Author|Jianyang Tang (Thomas)|
 |---|---
 |E-mail|jian4yang2.tang1@gmail.com
