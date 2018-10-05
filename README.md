@@ -71,7 +71,7 @@ The left side is a typical scenary of Japanese Riichi Mahjong table. This pictur
 
 # <a name="res"></a>4. Performance of the proposed Mahjong agent
 
-The proposed Mahjong agent was tested on tenhou.net. The test was carried out in two versions, i.e. one with defence model and another one without. The raw game logs and intermediate game results can be found in my another repository: https://github.com/erreurt/Experiments-result-of-mahjong-bot. 
+The proposed Mahjong agent was tested on tenhou.net. The test was carried out in two versions, i.e. one with defence model and another one without. The raw game logs and intermediate game results can be found in my another repository: https://github.com/erreurt/Experiments-result-of-mahjong-bot. The experiments were carried out with the agent version in ***experiment_ai.py***.
 
 ### 4.1. Convergence behavior of agent's performance
 
