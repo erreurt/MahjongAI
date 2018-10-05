@@ -43,7 +43,8 @@ The left side is a typical scenary of Japanese Riichi Mahjong table. This pictur
          * ***wait_calc.py*** <sub>contains functions that calculate whether the hand tiles are in waiting state, return the corresponding winning score, the partition, the to be discarded tile</sub>
          * ***win_calc.py*** <sub>contains functions that calculate the winning score for a specific partition of hand tiles</sub>
       * ***ai_interface.py*** <sub>the class that should be inherited while developing your own Mahjong agent</sub>
-      * ***jianyang_ai.py*** <sub>the proposed Mahjong agent class for my master thesis</sub>
+      * ***experiment_ai.py*** <sub>the old agent which was used in the experiments</sub>
+      * ***jianyang_ai.py*** <sub>the up-to-date agent</sub>
       * ***random_ai_example.py*** <sub>the example Mahjong agent class for giving a simple explanation on how to develop your own Mahjong agent</sub>
    * **[client]**
       * **[tilespng]** <sub>Pics used for GUI</sub>
