@@ -13,37 +13,237 @@ from agents.utils.wait_calc import WaitCalc
 from agents.utils.win_calc import WinCalc
 from client.mahjong_meld import Meld
 from client.mahjong_tile import Tile
+from client.mahjong_player import OpponentPlayer
 
 __author__ = "Jianyang Tang"
 __copyright__ = "Copyright 2018, Mahjong AI Master Thesis"
 __email__ = "jian4yang2.tang1@gmail.com"
 
+class OppPlayer(OpponentPlayer):
+
+    level_dict = {'新人': 91, '9級': 91, '8級': 91, '7級': 91, '6級': 91, '5級': 91, '4級': 91, '3級': 91, '2級': 92,
+                  '1級': 94, '初段': 96, '二段': 97, '三段': 98, '四段': 99,
+                  '五段': 100, '六段': 101, '七段': 102, '八段': 103, '九段': 104, '十段': 105, '天鳳位': 106}
+
+    def __init__(self, seat, dealer_seat):
+        super().__init__(seat, dealer_seat)
+        self.safe_tiles = []
+        self.prios_history = []
+        self.discard_types = []
+
+    def init_state(self):
+        super().init_state()
+        self.safe_tiles = []
+        self.prios_history = []
+        self.discard_types = []
+
+    def add_prediction(self, prios):
+        self.prios_history.append(prios)
+
+    def add_safe_tile(self, tile34):
+        self.safe_tiles.append(tile34)
+
+    def waiting_feature_212(self, self_index):
+        res = self.open_state_f_lst  # 89
+        res += self.game_table.revealed_feature  # 34
+        opponents_discard = [t for i in range(1, 4) for t in self.game_table.get_player((i + self_index) % 4).discard34]
+        res += [min(opponents_discard.count(tile) / 4, 1) for tile in range(34)]  # 34
+        opponents_melds = []
+        for i in range(1, 4):
+            opp = self.game_table.get_player((i + self_index) % 4)
+            opponents_melds += opp.meld34 + opp.minkan34 + opp.ankan34
+        res += [Tile.index_to_chow[chow] in opponents_melds for chow in range(21)]  # 21
+        res += [[pon] * 3 in opponents_melds or [pon] * 4 in opponents_melds for pon in range(34)]  # 34
+        return np.array(res)
+
+    def richii_feature_225(self, self_index):
+        res = self.open_state_f_richii  # 68
+        res += [tile in self.safe_tiles for tile in range(34)]  # 34
+        res += self.game_table.revealed_feature  # 34
+        opponents_discard = [t for i in range(1, 4) for t in self.game_table.get_player((i + self_index) % 4).discard34]
+        res += [min(opponents_discard.count(tile) / 4, 1) for tile in range(34)]  # 34
+        opponents_melds = []
+        for i in range(1, 4):
+            opp = self.game_table.get_player((i + self_index) % 4)
+            opponents_melds += opp.meld34 + opp.minkan34 + opp.ankan34
+        res += [Tile.index_to_chow[chow] in opponents_melds for chow in range(21)]  # 21
+        res += [([pon] * 3) in opponents_melds or ([pon] * 4) in opponents_melds for pon in range(34)]  # 34
+        return np.array(res)
+
+    @property
+    def is_valid(self):
+        return 0 in self.discard_types
+
+    @property
+    def waiting_prediction(self):
+        prios = {tile: 0 for tile in range(34)}
+        safe_tiles = self.abs_safe_tiles
+        if len(self.prios_history) == 0:
+            return []
+        factor = 1
+        for p in self.prios_history[-1::-1]:
+            v = p[0]
+            if factor <= 0:
+                break
+            for tile in range(34):
+                if tile in safe_tiles:
+                    continue
+                prios[tile] += v[tile] * factor
+            factor -= 0.280
+
+        prios = sorted(prios.items(), key=lambda x: -x[1])
+        cnt, res = 0, []
+        if self.dangerous:
+            prios = prios[0:7]
+        elif self.meld_len >= 2:
+            prios = prios[0:6 if self.turn_num <= 11 else 5]
+        elif self.meld_len == 1:
+            prios = prios[0:5 if self.turn_num <= 11 else 4]
+        elif self.prios_history[-1][1] <= self.level_dict[self.level]:
+            prios = prios[0:4 if self.turn_num <= 11 else 3]
+        else:
+            return []
+
+        for r in prios:
+            tile = r[0]
+            if tile in safe_tiles or tile in res or r[1] == 0 or self.game_table.revealed_tiles[tile] >= 4:
+                continue
+            if cnt == 0:
+                res.append(tile)
+                cnt += 1
+            elif cnt == 1:
+                for danger in res:
+                    if tile < 27 and danger // 9 == tile // 9 and abs(tile - danger) == 3:
+                        res.append(tile)
+                        break
+                else:
+                    res.append(tile)
+                    cnt += 1
+            else:
+                for danger in res:
+                    if tile < 27 and danger // 9 == tile // 9 and abs(tile - danger) == 3:
+                        res.append(tile)
+        return res
+
+    @property
+    def is_freezing(self):
+        return self.reach_status and abs(self.reach_time - len(self.discard34)) <= 2 and self.turn_num < 13
+
+    @property
+    def dangerous(self):
+        return self.reach_status or (self.cnt_open_bonus_tiles > 2 and self.turn_num > 6)
+
+    @property
+    def cnt_open_bonus_tiles(self):
+        cnt = 0
+        bts = self.game_table.bonus_tiles
+        for meld in self.total_melds34:
+            for tile in meld:
+                if tile in bts:
+                    cnt += 1
+        for meld in self.meld136:
+            if any(rb in meld.tiles for rb in Tile.RED_BONUS):
+                cnt += 1
+        for meld in self.total_melds34:
+            if meld[0] == meld[1] and meld[0] > 26:
+                cnt += (meld[0] in Tile.THREES) + (meld[0] == self.round_wind) + (meld[0] == self.player_wind)
+        return cnt
+
+    @property
+    def enough_fan_to_win(self):
+        for meld in self.total_melds34:
+            if meld[0] == meld[1] and meld[0] in self.bonus_honors:
+                return True
+        return False
+
+    @property
+    def abs_safe_tiles(self):
+        return list(set(self.safe_tiles + self.discard34))
+
+    @property
+    def is_reach_dealer(self):
+        return self.reach_status and self.is_dealer
+
+    @property
+    def gin_safe_tiles(self):
+        res = []
+        for i in range(0, 9, 18):
+            i in self.discard34 and i + 6 in self.discard34 and res.append(i + 3)
+            i + 1 in self.discard34 and i + 7 in self.discard34 and res.append(i + 4)
+            i + 2 in self.discard34 and i + 8 in self.discard34 and res.append(i + 5)
+            i + 3 in self.discard34 and (res.append(i) or res.append(i + 6))
+            i + 4 in self.discard34 and (res.append(i + 1) or res.append(i + 7))
+            i + 5 in self.discard34 and (res.append(i + 2) or res.append(i + 8))
+        return res
+
+    @property
+    def relaxed_gin_safe_tiles(self):
+        res = []
+        abs_safe = self.abs_safe_tiles
+        for i in range(0, 9, 18):
+            i in abs_safe and i + 6 in abs_safe and res.append(i + 3)
+            i + 1 in abs_safe and i + 7 in abs_safe and res.append(i + 4)
+            i + 2 in abs_safe and i + 8 in abs_safe and res.append(i + 5)
+            i + 3 in abs_safe and (res.append(i) or res.append(i + 6))
+            i + 4 in abs_safe and (res.append(i + 1) or res.append(i + 7))
+            i + 5 in abs_safe and (res.append(i + 2) or res.append(i + 8))
+        return res
+
+    @property
+    def meld_len(self):
+        return len(self.meld136)
+
+    @property
+    def dangerous_type(self):
+        if self.meld_len >= 2:
+            meld_types = []
+            for m in self.total_melds34:
+                if m[0] // 9 < 3 and m[0] // 9 not in meld_types:
+                    meld_types.append(m[0] // 9)
+            if len(meld_types) == 1:
+                return meld_types[0]
+        if self.meld_len == 1 and len(self.discard34) > 8:
+            meld = self.total_melds34[0]
+            discard_geos = [0] * 3
+            for d in self.discard34:
+                if d < 27:
+                    discard_geos[d // 9] += 1
+            min_num = min(discard_geos)
+            if min_num == 0:
+                min_type = discard_geos.index(min_num)
+                if meld[0] // 9 == min_type or meld[0] // 9 == 3:
+                    return min_type
+        if len(self.discard34) > 12:
+            discard_geos = [0] * 3
+            for d in self.discard34:
+                if d < 27:
+                    discard_geos[d // 9] += 1
+            min_num = min(discard_geos)
+            if min_num <= 1:
+                return discard_geos.index(min_num)
+        return -1
+
 
 class EnsembleCLF:
-    root_dir = os.path.dirname(os.path.abspath(__file__)) + "/ensemble_clfs/"
+    root_dir = os.path.dirname(os.path.abspath(__file__)) + "/utils/clfs/"
     RICHII = True
     NORMAL = True
 
     def __init__(self):
         if self.RICHII:
             self.clfs_richii = []
-            ensembles_richii = os.listdir(self.root_dir)
-            ensembles_richii = [f for f in ensembles_richii if '_R_' in f]
-            # print(ensembles_richii)
-            for f in ensembles_richii:
-                clfs = pickle.load(open(self.root_dir + f, 'rb'))
-                for k, v in clfs.items():
-                    self.clfs_richii.append(v)
+            clfs = os.listdir(self.root_dir)
+            clfs = [f for f in clfs if 'R_(' in f]
+            for f in clfs:
+                self.clfs_richii.append(pickle.load(open(self.root_dir + f, 'rb')))
             print("{} richii classifiers loaded".format(len(self.clfs_richii)))
         if self.NORMAL:
             self.clfs_normal = []
-            ensembles_normal = os.listdir(self.root_dir)
-            ensembles_normal = [f for f in ensembles_normal if '_N_' in f]
+            clfs = os.listdir(self.root_dir)
+            clfs = [f for f in clfs if 'N_(' in f]
             # print(ensembles_normal)
-            for f in ensembles_normal:
-                clfs = pickle.load(open(self.root_dir + f, 'rb'))
-                for k, v in clfs.items():
-                    self.clfs_normal.append(v)
+            for f in clfs:
+                self.clfs_normal.append(pickle.load(open(self.root_dir + f, 'rb')))
             print("{} normal waiting classifiers loaded".format(len(self.clfs_normal)))
 
     def predict_normal_single_prio(self, input_f):
@@ -1130,13 +1330,11 @@ class WaitingAnalyser:
 
 class MLAI(AIInterface):
 
-    def __init__(self, table, seat, dealer_seat, thclient, ensemble_clfs):
-        super().__init__(table, seat, dealer_seat)
-        self.thclient = thclient
+    def __init__(self, ensemble_clfs):
+        super().__init__()
         self.ensemble_clfs = ensemble_clfs
         self.called_reach = False
         self.to_discard_after_reach = -1
-        self.thclient.drawer = None
         self.decided_pph = False
         self.decided_dy = False
         self.decided_qh = False
@@ -1902,3 +2100,75 @@ class MLAI(AIInterface):
         self.not_kan = None
         self.decided_qh = False
         self.riichi_waiting = None
+
+    @property
+    def has_dori(self):
+        for meld in self.total_melds34:
+            if meld[0] > 26 and meld[0] in self.bonus_honors:
+                return True
+        for tile in self.bonus_honors:
+            if self.hand34.count(tile) >= 3:
+                return True
+        return False
+
+    @property
+    def opponents(self):
+        return [self.game_table.get_player(i) for i in range(1, 4)]
+
+    @property
+    def total_tiles34(self):
+        return [t // 4 for t in self.total_tiles136]
+
+    @property
+    def total_tiles136(self):
+        return self.tiles136 + [t for meld in self.meld136 for t in meld.tiles]
+
+    @property
+    def potential_fan(self):
+        return self.cnt_total_bonus_tiles + self.cnt_open_fan + self.cnt_hand_fan
+
+    @property
+    def cnt_total_bonus_tiles(self):
+        cnt = len([t136 for t136 in self.total_tiles136 if t136 in Tile.RED_BONUS])
+        cnt += sum([self.game_table.bonus_tiles.count(t) for t in self.total_tiles34])
+        return cnt
+
+    @property
+    def cnt_open_fan(self):
+        res = 0
+        for m in self.total_melds34:
+            if m[0] > 26 and m[0] in self.bonus_honors:
+                res += (m[0] == self.round_wind) + (m[0] == self.player_wind) + (m[0] in Tile.THREES)
+        return res
+
+    @property
+    def cnt_hand_fan(self):
+        res = 0
+        for tile in self.bonus_honors:
+            res += self.hand34.count(tile) >= 3
+        return res
+
+    @property
+    def total_revealed(self):
+        revealed = deepcopy(self.game_table.revealed_tiles)
+        for t in self.hand34:
+            revealed[t] += 1
+        return revealed
+
+    @property
+    def is_all_last(self):
+        return self.game_table.round_number >= 3
+
+    @property
+    def current_rank(self):
+        return sorted(self.game_table.scores).index(self.score)
+
+    @property
+    def need_scores(self):
+        res = []
+        for score in self.game_table.scores:
+            if score > self.score:
+                res.append(score - self.score)
+        if max(self.game_table.scores) < 30000:
+            res.append(30000 - self.score)
+        return res

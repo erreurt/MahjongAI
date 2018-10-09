@@ -49,7 +49,7 @@ def run_example_ai():
 
 
 def run_jianyang_ai(drawer=None):
-    ai_module = importlib.import_module("agents.jianyang_ai")
+    ai_module = importlib.import_module("agents.experiment_ai")
     waiting_prediction_class = getattr(ai_module, "EnsembleCLF")
     ensemble_clfs = waiting_prediction_class()
     ai_class = getattr(ai_module, "MLAI")
