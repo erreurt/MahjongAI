@@ -115,6 +115,8 @@ aspects.* Transactions of Information Processing Society of Japan, vol. 55, no. 
 
 ***
 
+Note that while playing Mahjong, falling into 4th place is definitely a taboo, since one would get level points reduced. As a result, the rate of falling into 4th place of a player is critical to its overall performance. My bot has a better fixed level exactly due to the low 4th place rate. 
+
 # <a name="run"></a>5. How to run the proposed Mahjong agent?
 To run the Mahjong agent, one has to specify a few configurations. As shown in the following example from main.py:
 ```python
