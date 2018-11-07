@@ -6,6 +6,8 @@ This Repo can be used as a Framework for realtime testing of your own agent. Any
 
 A development library (crawling and pre-processing of game logs, calculation of shantin and winning score etc.) is now available in: https://github.com/erreurt/MahjongKit
 
+**Plan**: 1. Decide whether to call a meld/call Riichi or not using Naive Bayes Classifier (Instead of condition-rules). 
+
 |Author|Jianyang Tang (Thomas)|
 |---|---
 |E-mail|jian4yang2.tang1@gmail.com
