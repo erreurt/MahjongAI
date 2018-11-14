@@ -2,15 +2,20 @@
 
 #### Mahjong is a "Constraint satisfaction optimisation" multiplayer strategic board game
 
-This Repo can be used as a Framework for realtime testing of your own agent. Anyone who is interested in this project and wants to make powerful Mahjong AI is welcome to extend this agent. 
+This is a project for my master's thesis. Anyone who is interested in making powerful Mahjong AI is welcome to extend my agent. 
 
-A development library (crawling and pre-processing of game logs, calculation of shantin and winning score etc.) is now available in: https://github.com/erreurt/MahjongKit
+In the case that you want to develop your own Mahjong agent, this Repo can also be used as a Framework for realtime testing (***with real human players***). Then you can save all your time for finding the best strategy for your agent. Furthermore a development library (crawling and pre-processing of game logs, calculation of shantin and winning score etc.) is now available in: https://github.com/erreurt/MahjongKit
 
 **Plan**: 1. Decide whether to call a meld/call Riichi or not using Naive Bayes Classifier (Instead of condition-rules). 
 
 |Author|Jianyang Tang (Thomas)|
 |---|---
 |E-mail|jian4yang2.tang1@gmail.com
+
+****
+
+# Summary
+Mahjong is a four player strategy game with imperfect information. The main challenges of developing an intelligent Mahjong agent are for example the complicated game rules, the immense search space, multiple opponents and imperfect information. Several existing works have attempted to tackle these problems through Monte Carlo tree simulation, utility function fitting by supervised learning or opponents model by regression algorithms. Nevertheless, the performance of intelligent Mahjong playing agents is still far away from that of the best human players. Based on statistical analysis for the Mahjong game and human expert knowledge, an intelligent Mahjong agent was proposed in this work. To tackle the problems of the state-of-the-art work, heuristics technologies and an enhanced opponents model achieved by adopting bagging of multilayer perceptrons were applied to this work. The experiments show that the proposed agent outperforms the state-of-the-art agent, and the applied opponents model has a significant positive effect on the performance of the agent. Furthermore, several interesting points can be discerned from the experiments, which are pretty meaningful for future work.
 
 ****
 
