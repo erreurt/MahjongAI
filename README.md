@@ -2,7 +2,7 @@
 
 #### Mahjong is a "Constraint satisfaction optimisation" multiplayer strategic board game
 
-This is a project for my master's thesis. Anyone who is interested in making powerful Mahjong AI is welcome to extend my agent. 
+This is a project for my master's thesis. Anyone who is interested in making powerful Mahjong AI is welcome to extend my agent. For more details about the applied algorithms and the reasons why such algorithms are used, please contact me with E-Mail. 
 
 In the case that you want to develop your own Mahjong agent, this Repo can also be used as a Framework for realtime testing (***with real human players***). Then you can save all your time for finding the best strategy for your agent. Furthermore a development library (crawling and pre-processing of game logs, calculation of shantin and winning score etc.) is now available in: https://github.com/erreurt/MahjongKit
 
