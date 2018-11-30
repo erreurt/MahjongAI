@@ -46,7 +46,7 @@ The left side is a typical scenary of Japanese Riichi Mahjong table. This pictur
 # <a name="dir"></a>2. Directory of the program and short explanations
 
 * **[MahjongAI]**
-   * **[agents]**
+   * **[agents]** Agent 
       * **[utils]**
          * **[clfs]**
             * multiple multilayer perceptrons classifiers <sub>several MLP classifiers for predicting dangerous tiles</sub>
@@ -57,7 +57,7 @@ The left side is a typical scenary of Japanese Riichi Mahjong table. This pictur
       * ***experiment_ai.py*** <sub>the old agent which was used in the experiments</sub>
       * ***jianyang_ai.py*** <sub>the up-to-date agent</sub>
       * ***random_ai_example.py*** <sub>the example Mahjong agent class for giving a simple explanation on how to develop your own Mahjong agent</sub>
-   * **[client]**
+   * **[client]** For realtime testing with human beings
       * **[tilespng]** <sub>Pics used for GUI</sub>
       * ***mahjong_meld.py*** <sub>class of Mahjong meld</sub>
       * ***mahjong_tile.py*** <sub>class of Mahjong tile</sub>
@@ -65,7 +65,7 @@ The left side is a typical scenary of Japanese Riichi Mahjong table. This pictur
       * ***mahjong_player.py*** <sub>class of Mahjong player, for storing players' tiles and game status</sub>
       * ***tenhou_client.py*** <sub>class of client for tenhou.net. This class implements the game just as the browser version</sub>
       * ***tenhou_parser.py*** <sub>class of parser for tenhou.net server. It provides decoding methods for messages reveived from the tenhou.net server</sub>
-   * **[logger]**
+   * **[logger]** Recording the playing history of the agent while testing
       * ***logger_handler.py*** <sub>class of logging, for storing game run and game results</sub>
    * ***main.py*** <sub>contains example of how to run the Mahjong agent</sub>
    * ***gui_main.py*** <sub>contains example of how to run the Mahjong agent with GUI</sub>
