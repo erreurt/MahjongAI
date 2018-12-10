@@ -7,6 +7,7 @@ This is a project for my master's thesis. Anyone who is interested in making pow
 In the case that you want to develop your own Mahjong agent, this Repo can also be used as a Framework for realtime testing (***with real human players***). Then you can save all your time for finding the best strategy for your agent. Furthermore a development library (crawling and pre-processing of game logs, calculation of shantin and winning score etc.) is now available in: https://github.com/erreurt/MahjongKit
 
 **Plan**: 1. Decide whether to call a meld/call Riichi or not using Naive Bayes Classifier (Instead of condition-rules).
+
 **Plan**: 2. Predicting (roughly) opponents' hand tiles by applying pure RNN or RNN x GAN.
 
 |Author|Jianyang Tang (Thomas)|
