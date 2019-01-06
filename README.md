@@ -8,6 +8,8 @@ In the case that you want to develop your own Mahjong agent, this Repo can also 
 
 **Next Update coming soon**: 1. Decide whether to call a meld/call Riichi or not using Random Forest (Instead of condition-rules).
 
+**Attention**: If you test your bot parallelly with more than 4 account under the same IP adresses, your IP will be banned by tenhou.net for 24 hours. (I don't know exactly about the rules of banning players, but that's all inferred from my observation.)
+
 |Author|Jianyang Tang (Thomas)|
 |---|---
 |E-mail|jian4yang2.tang1@gmail.com
