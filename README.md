@@ -1,5 +1,7 @@
 # README -- MahjongAI
 
+### I'm so sorry that I didn't update anything these days. Because of moving and starting new job I'm so busy. The next update or better documentation will come whenever I would really have time. 
+
 #### Mahjong is a "Constraint satisfaction optimisation" multiplayer strategic board game
 
 This is a project for my master's thesis. Anyone who is interested in making powerful Mahjong AI is welcome to extend my agent. For more details about the applied algorithms and the reasons why such algorithms are used, please contact me with E-Mail. 
