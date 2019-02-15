@@ -8,7 +8,11 @@ This is a project for my master's thesis. Anyone who is interested in making pow
 
 In the case that you want to develop your own Mahjong agent, this Repo can also be used as a Framework for realtime testing (***with real human players***). Then you can save all your time for finding the best strategy for your agent. Furthermore a development library (crawling and pre-processing of game logs, calculation of shantin and winning score etc.) is now available in: https://github.com/erreurt/MahjongKit
 
-**Next Update coming soon**: 1. Decide whether to call a meld/call Riichi or not using Random Forest (Instead of condition-rules).
+**Next Update coming soon**: 
+
+1. ***Better feature engineering needed*** Decide whether to call a meld/call Riichi or not using Random Forest (Instead of condition-rules).
+
+2. ***Ongoing***: Training waiting tiles prediction model with LSTM. 
 
 **Attention**: If you test your bot parallelly with more than 4 accounts under the same IP adresse, your IP adress will be banned by tenhou.net for 24 hours. (I don't know exactly about the rules of banning players, but that's all inferred from my observation.)
 
